@@ -1,55 +1,41 @@
 <head>
   <link
-    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
     rel="stylesheet"
   />
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <div class="d-flex w-100 justify-content-center">
-        <span class="navbar-brand">Review Nang</span>
+        <a class="navbar-brand font-bold" routerLink="/homepage">Review Nang</a>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#">Search</a>
+            <a class="nav-link font-bold" href="#">Search</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+            <a class="nav-link font-bold" routerLink="/login">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link btn btn-signup" href="#">Sign Up</a>
+            <a class="nav-link btn btn-signup font-bold" href="#">Sign Up</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <div class="container">
+  <div class="container login-container">
     <div class="row">
-      <div class="col-md-5 mx-auto mt-5 pt-5">
-        <div class="card no-border">
-          <div class="card-header" style="background-color: #fafafa">
-            <h2
-              class="pt-3"
-              style="
-                text-align: center;
-                font-weight: bold;
-                color: #5c728a;
-                margin-top: 10%;
-              "
-            >
-              Login
-            </h2>
+      <div class="col-md-5 mx-auto">
+        <div class="card no-border login-card">
+          <div class="card-header login-header">
+            <h2 class="login-title">Login</h2>
           </div>
-          <div class="card-body" style="background-color: #fafafa">
+          <div class="card-body login-body">
             <form [formGroup]="loginForm" (ngSubmit)="login()">
-              <div class="mt-4 mb-4">
+              <div class="form-group">
                 <input
                   type="text"
                   id="username"
@@ -64,11 +50,11 @@
                     loginForm.get('username')?.touched
                   "
                 >
-                  <p style="color: red">Username is required.</p>
+                  <p class="error-message">Username is required.</p>
                 </div>
               </div>
 
-              <div class="mt-4 mb-4">
+              <div class="form-group">
                 <input
                   type="password"
                   id="password"
@@ -83,15 +69,11 @@
                     loginForm.get('password')?.touched
                   "
                 >
-                  <p style="color: red">Password is required.</p>
+                  <p class="error-message">Password is required.</p>
                 </div>
               </div>
               <div class="d-grid gap-2">
-                <button
-                  type="submit"
-                  class="btn btn-primary"
-                  style="background-color: #3db4f2; border-color: #3db4f2"
-                >
+                <button type="submit" class="btn btn-primary login-button">
                   Login
                 </button>
               </div>

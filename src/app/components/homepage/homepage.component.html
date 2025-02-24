@@ -1,1 +1,392 @@
-<p>homepage works!</p>
+<div *ngIf="isLoggedIn; else loggedOut">
+  <h2>Welcome, {{ currentUser?.username }}!</h2>
+  <p>You are logged in.</p>
+  <button (click)="authService.logout()">Logout</button>
+</div>
+
+<ng-template #loggedOut>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <div class="d-flex w-100 justify-content-center">
+          <a
+            class="navbar-brand"
+            routerLink="/homepage"
+            style="font-weight: bold"
+            >Review Nang</a
+          >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="font-weight: bold">Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/login" style="font-weight: bold"
+                >Login</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link btn btn-signup"
+                href="#"
+                style="font-weight: bold"
+                >Sign Up</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container pt-5">
+      <div
+        class="container"
+        style="background-color: #0a1625; border-radius: 10px"
+      >
+        <div class="text-center">
+          <h1 style="padding-top: 50px; color: #f0f3f5; font-weight: bold">
+            The ultimate platform for movie lovers
+          </h1>
+          <h3 style="padding-top: 10px; color: #a6ceeb; font-weight: bold">
+            Discover, review, and share your favorite movies with Review Nang.
+          </h3>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-md-3 text-center">
+            <div class="icon">
+              <svg
+                width="136"
+                height="136"
+                viewBox="0 0 136 136"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M112.313 11.3333H23.6866C16.864 11.3333 11.3333 16.8641 11.3333 23.6867V112.313C11.3333 119.136 16.864 124.667 23.6866 124.667H112.313C119.136 124.667 124.667 119.136 124.667 112.313V23.6867C124.667 16.8641 119.136 11.3333 112.313 11.3333Z"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M39.6667 11.3333V124.667"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M96.3333 11.3333V124.667"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M11.3333 68H124.667"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M11.3333 39.6667H39.6666"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M11.3333 96.3333H39.6666"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M96.3333 96.3333H124.667"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M96.3333 39.6667H124.667"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3 style="color: #f0f3f5; font-weight: bold">Explore Genres</h3>
+            <p style="color: #a6ceeb; font-weight: bold">
+              Browse movies by genre to find the perfect film for every mood and
+              occasion.
+            </p>
+          </div>
+          <div class="col-md-3 text-center">
+            <div class="icon">
+              <svg
+                width="137"
+                height="137"
+                viewBox="0 0 137 137"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M97.0269 11.3872H40.3602C34.101 11.3872 29.0269 16.4613 29.0269 22.7205V113.387C29.0269 119.646 34.101 124.721 40.3602 124.721H97.0269C103.286 124.721 108.36 119.646 108.36 113.387V22.7205C108.36 16.4613 103.286 11.3872 97.0269 11.3872Z"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M68.6936 102.054H68.7503"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3 style="color: #f0f3f5; font-weight: bold">Track Favorites</h3>
+            <p style="color: #a6ceeb; font-weight: bold">
+              Keep track of your favorite movies and build your personalized
+              watchlist.
+            </p>
+          </div>
+          <div class="col-md-3 text-center">
+            <div class="icon">
+              <svg
+                width="136"
+                height="136"
+                viewBox="0 0 136 136"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M119 85C119 88.0058 117.806 90.8885 115.681 93.0139C113.555 95.1393 110.672 96.3333 107.667 96.3333H39.6667L17 119V28.3333C17 25.3275 18.194 22.4449 20.3195 20.3195C22.4449 18.194 25.3275 17 28.3333 17H107.667C110.672 17 113.555 18.194 115.681 20.3195C117.806 22.4449 119 25.3275 119 28.3333V85Z"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <h3 style="color: #f0f3f5; font-weight: bold">
+              Join the Community
+            </h3>
+            <p style="color: #a6ceeb; font-weight: bold">
+              Engage with other movie enthusiasts, share reviews, and exchange
+              recommendations.
+            </p>
+          </div>
+          <div class="col-md-3 text-center">
+            <div class="icon">
+              <svg
+                width="136"
+                height="136"
+                viewBox="0 0 136 136"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M54.2652 1.33746C27.8615 6.49066 6.58441 27.7144 1.37804 54.0383C-8.45032 103.711 36.3617 140.74 70.1234 135.507C81.0674 133.807 86.4332 121.003 81.4128 111.149C75.2767 99.089 84.0425 85.0107 97.5897 85.0107H118.761C128.27 85.0107 135.973 77.148 136 67.6651C135.867 25.8019 97.7757 -7.13612 54.2652 1.33746ZM25.4974 85.0107C20.7957 85.0107 16.9972 81.2122 16.9972 76.5105C16.9972 71.8089 20.7957 68.0104 25.4974 68.0104C30.199 68.0104 33.9976 71.8089 33.9976 76.5105C33.9976 81.2122 30.199 85.0107 25.4974 85.0107ZM33.9976 51.0101C29.2959 51.0101 25.4974 47.2116 25.4974 42.51C25.4974 37.8083 29.2959 34.0098 33.9976 34.0098C38.6992 34.0098 42.4978 37.8083 42.4978 42.51C42.4978 47.2116 38.6992 51.0101 33.9976 51.0101ZM67.9984 34.0098C63.2967 34.0098 59.4982 30.2114 59.4982 25.5097C59.4982 20.8081 63.2967 17.0096 67.9984 17.0096C72.7001 17.0096 76.4986 20.8081 76.4986 25.5097C76.4986 30.2114 72.7001 34.0098 67.9984 34.0098ZM101.999 51.0101C97.2975 51.0101 93.499 47.2116 93.499 42.51C93.499 37.8083 97.2975 34.0098 101.999 34.0098C106.701 34.0098 110.499 37.8083 110.499 42.51C110.499 47.2116 106.701 51.0101 101.999 51.0101Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+            <h3 style="color: #f0f3f5; font-weight: bold">
+              Customize Your Style
+            </h3>
+            <p style="color: #a6ceeb; font-weight: bold">
+              Rate movies, set preferences, and even choose between light and
+              dark modes.
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center mt-1">
+          <button class="btn btn-primary btn-lg" style="font-weight: bold">
+            Get Started
+            <svg
+              width="44"
+              height="44"
+              viewBox="0 0 44 44"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="22" cy="22" r="22" fill="#D9E6FF" />
+              <path
+                d="M29.454 23.8207L18.9216 34.449C18.1936 35.1837 17.0165 35.1837 16.2962 34.449L14.546 32.6829C13.818 31.9483 13.818 30.7604 14.546 30.0336L22.0116 22.5L14.546 14.9664C13.818 14.2318 13.818 13.0439 14.546 12.3171L16.2962 10.551C17.0242 9.81635 18.2014 9.81635 18.9216 10.551L29.454 21.1793C30.182 21.8982 30.182 23.0861 29.454 23.8207Z"
+                fill="#3577FF"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="mt-4"
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        "
+      >
+        <div class="row">
+          <div class="col-md">
+            <label for="search" style="font-weight: bold; color: white"
+              >Search</label
+            >
+            <input
+              type="text"
+              id="search"
+              class="form-control"
+              style="font-weight: bold; color: #95a5a6"
+            />
+          </div>
+          <div class="col-md">
+            <label for="genres" style="font-weight: bold; color: white"
+              >Genres</label
+            >
+            <select
+              id="genres"
+              class="form-control"
+              style="font-weight: bold; color: #95a5a6"
+            >
+              <option value="any">Any</option>
+            </select>
+          </div>
+          <div class="col-md">
+            <label for="year" style="font-weight: bold; color: white"
+              >Year</label
+            >
+            <select
+              id="year"
+              class="form-control"
+              style="font-weight: bold; color: #95a5a6"
+            >
+              <option value="any">Any</option>
+            </select>
+          </div>
+          <div class="col-md">
+            <label for="rating" style="font-weight: bold; color: white"
+              >Rating</label
+            >
+            <select
+              id="rating"
+              class="form-control"
+              style="font-weight: bold; color: #95a5a6"
+            >
+              <option value="any">Any</option>
+            </select>
+          </div>
+          <div class="col-md">
+            <label for="language" style="font-weight: bold; color: white"
+              >Language</label
+            >
+            <select
+              id="language"
+              class="form-control"
+              style="font-weight: bold; color: #95a5a6"
+            >
+              <option value="any">Any</option>
+            </select>
+          </div>
+        </div>
+        <div style="align-self: flex-end; margin-top: auto; padding-top: 12px">
+          <button
+            class="btn btn-secondary"
+            style="background-color: white; color: black"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 21V14"
+                stroke="#95A5A6"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M4 10V3"
+                stroke="#95A5A6"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M12 21V12"
+                stroke="#95A5A6"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M12 8V3"
+                stroke="#95A5A6"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M20 21V16"
+                stroke="#95A5A6"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M20 12V3"
+                stroke="#95A5A6"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M1 14H7"
+                stroke="#95A5A6"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M9 8H15"
+                stroke="#95A5A6"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M17 16H23"
+                stroke="#95A5A6"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <h2>NOW IN THEATERS</h2>
+        <a href="#" class="float-right">View all</a>
+      </div>
+    </div>
+  </body>
+</ng-template>
