@@ -1,0 +1,98 @@
+.movie-card {
+  position: relative;
+  text-align: center;
+  margin: 10px;
+  display: inline-block;
+  width: calc(20% - 20px);
+  vertical-align: top;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.movie-hover-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  padding: 5px;
+  box-sizing: border-box;
+  overflow: auto;
+  font-size: 14px;
+}
+
+.movie-card:hover .movie-hover-content {
+  opacity: 1;
+}
+
+.movie-director,
+.movie-runtime,
+.movie-genres,
+.movie-description {
+  margin-bottom: 3px;
+}
+
+.movie-genres {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.genre {
+  background-color: #333;
+  padding: 2px 4px;
+  border-radius: 3px;
+  margin: 2px;
+  font-size: 12px;
+}
+
+.movie-image {
+  width: 100%;
+  height: 403px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.movie-details {
+  margin-top: 5px;
+  padding: 5px;
+  min-height: 60px;
+}
+
+.movie-rating {
+  font-size: 20;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.movie-title {
+  font-size: 22;
+  font-weight: bold;
+  margin-top: 3px;
+  color: white;
+  text-align: left;
+}
+
+.movie-rating-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie-watchlist {
+  display: flex;
+  align-items: center;
+  font-size: 20;
+  color: white;
+  font-weight: bold;
+}

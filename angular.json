@@ -34,7 +34,10 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assets",
+              "src/assets/images",
+              "src/assets/images/movie-posters"
             ],
             "styles": [
               "src/styles.css",

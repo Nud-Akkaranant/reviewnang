@@ -1,0 +1,65 @@
+<div class="movie-card">
+  <img
+    *ngIf="movie?.imageUrl"
+    [src]="movie?.imageUrl"
+    alt="{{ movie?.title }}"
+    class="movie-image"
+  />
+  <div class="movie-details">
+    <div class="movie-rating-container">
+      <div class="movie-rating" *ngIf="movie?.rating && movie?.usersRating">
+        <svg
+          width="31"
+          height="30"
+          viewBox="0 0 31 30"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M16.7572 1.05457C16.4538 0.41011 15.8127 0 15.1087 0C14.4046 0 13.7693 0.41011 13.4602 1.05457L9.7797 8.80566L1.56014 10.0477C0.873268 10.1532 0.300875 10.6453 0.0890898 11.319C-0.122695 11.9928 0.0490221 12.7369 0.54128 13.2348L6.50561 19.2752L5.09752 27.8113C4.98305 28.5144 5.26924 29.2291 5.83591 29.6451C6.40258 30.0611 7.15241 30.1138 7.7706 29.7799L15.1144 25.7666L22.4582 29.7799C23.0764 30.1138 23.8262 30.0669 24.3929 29.6451C24.9595 29.2233 25.2457 28.5144 25.1313 27.8113L23.7175 19.2752L29.6818 13.2348C30.174 12.7369 30.3515 11.9928 30.134 11.319C29.9165 10.6453 29.3498 10.1532 28.6629 10.0477L20.4376 8.80566L16.7572 1.05457Z"
+            fill="#F5BD02"
+          />
+        </svg> &nbsp;
+        {{ movie?.rating }} ({{ movie?.usersRating }})
+      </div>
+      <div class="movie-watchlist" *ngIf="movie?.watchlist">
+        <svg
+          width="33"
+          height="30"
+          viewBox="0 0 33 30"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0_336_271)">
+            <path
+              d="M16.2634 16.875C21.2695 16.875 25.331 13.0957 25.331 8.4375C25.331 3.7793 21.2695 0 16.2634 0C11.2573 0 7.1957 3.7793 7.1957 8.4375C7.1957 13.0957 11.2573 16.875 16.2634 16.875ZM24.3235 18.75H20.8539C19.4559 19.3477 17.9006 19.6875 16.2634 19.6875C14.6261 19.6875 13.0771 19.3477 11.6729 18.75H8.20322C3.75124 18.75 0.143066 22.1074 0.143066 26.25V27.1875C0.143066 28.7402 1.49692 30 3.16562 30H29.3611C31.0298 30 32.3837 28.7402 32.3837 27.1875V26.25C32.3837 22.1074 28.7755 18.75 24.3235 18.75Z"
+              fill="#95A5A6"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_336_271">
+              <rect
+                width="32.2406"
+                height="30"
+                fill="white"
+                transform="translate(0.143066)"
+              />
+            </clipPath>
+          </defs>
+        </svg> &nbsp;
+        ({{ movie?.watchlist }})
+      </div>
+    </div>
+    <div class="movie-title">
+      {{ movie?.title }}
+    </div>
+    <div class="movie-hover-content">
+      <div class="movie-director">{{ movie?.director }}</div>
+      <div class="movie-runtime">{{ movie?.runtime }}</div>
+      <div class="movie-genres">
+        <span *ngFor="let genre of movie?.genres" class="genre">{{ genre }}</span>
+      </div>
+      <div class="movie-description">{{ movie?.description }}</div>
+    </div>
+  </div>
+</div>

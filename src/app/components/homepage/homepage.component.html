@@ -44,9 +44,9 @@
       </div>
     </nav>
 
-    <div class="container pt-5">
+    <div class="container-fluid pt-5">
       <div
-        class="container"
+        class="container-fluid"
         style="background-color: #0a1625; border-radius: 10px"
       >
         <div class="text-center">
@@ -383,9 +383,18 @@
         </div>
       </div>
 
-      <div class="mt-5">
-        <h2>NOW IN THEATERS</h2>
-        <a href="#" class="float-right">View all</a>
+      <div class="mt-3 mb-5">
+        <h2 style="color: white; font-weight: bold;">NOW IN THEATERS</h2>
+        <div class="movie-list">
+          <app-movie-card *ngFor="let movie of nowInTheaters" [movie]="movie"></app-movie-card>
+        </div>
+      </div>
+
+      <div class="mt-3 mb-5">
+        <h2 style="color: white; font-weight: bold;">UPCOMING MOVIES</h2>
+        <div class="movie-list">
+          <app-movie-card *ngFor="let movie of upcomingMovies" [movie]="movie"></app-movie-card>
+        </div>
       </div>
     </div>
   </body>
