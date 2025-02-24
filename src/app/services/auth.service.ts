@@ -12,7 +12,7 @@ export class AuthService {
   private currentUser: User | null = null;
 
   login(user: User): boolean {
-    if (user.username === 'test' && user.password === 'password') {
+    if (user.username === 'test' && user.password === 'test') {
       this.isLoggedInSubject.next(true);
       this.currentUser = user;
       localStorage.setItem('username', user.username);

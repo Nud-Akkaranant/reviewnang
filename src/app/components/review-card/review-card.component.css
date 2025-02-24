@@ -1,0 +1,67 @@
+.review-card {
+  /* border: 1px solid #ddd; */
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.review-image {
+  width: 80px;
+  /* height: 80px; */
+  object-fit: contain;
+  margin-right: 10px;
+  border-radius: 10%;
+}
+
+.review-title-rating {
+  display: flex;
+  flex-direction: column;
+}
+
+.review-title {
+  font-weight: bold;
+  color: white;
+}
+
+.review-rating {
+  color: #f39c12;
+  font-weight: bold;
+}
+
+.review-text {
+  margin-bottom: 10px;
+  color: white;
+  /* font-size: larger; */
+}
+
+.read-more {
+  color: #f39c12;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.review-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+}
+
+.helpful-counts {
+  display: flex;
+}
+
+.helpful,
+.unhelpful {
+  margin-left: 5px;
+}

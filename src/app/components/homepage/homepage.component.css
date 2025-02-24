@@ -26,3 +26,35 @@ body {
 .btn-secondary {
   color: white;
 }
+.movie-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.view-all-link {
+  color: #a6ceeb;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: color 0.3s ease;
+}
+.view-all-link:hover {
+  color: #f0f3f5;
+}
+.latest-reviews {
+  margin-top: 20px;
+}
+
+.latest-reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.view-more {
+  color: #3498db;
+  text-decoration: none;
+}

@@ -1,17 +1,225 @@
-<div *ngIf="isLoggedIn; else loggedOut">
-  <h2>Welcome, {{ currentUser?.username }}!</h2>
-  <p>You are logged in.</p>
-  <button (click)="authService.logout()">Logout</button>
-</div>
+<body *ngIf="isLoggedIn; else loggedOut">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <div class="d-flex w-100 justify-content-center">
+        <a
+          class="navbar-brand"
+          routerLink="/homepage"
+          style="font-weight: bold"
+          >Review Nang</a
+        >
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" style="font-weight: bold">Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-weight: bold">{{ currentUser?.username }}</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link btn btn-signup"
+              (click)="authService.logout()"
+              style="font-weight: bold"
+              >Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid pt-5">
+    <div
+      class="mt-4"
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      "
+    >
+      <div class="row">
+        <div class="col-md">
+          <label for="search" style="font-weight: bold; color: white"
+            >Search</label
+          >
+          <input
+            type="text"
+            id="search"
+            class="form-control"
+            style="font-weight: bold; color: #95a5a6"
+          />
+        </div>
+        <div class="col-md">
+          <label for="genres" style="font-weight: bold; color: white"
+            >Genres</label
+          >
+          <select
+            id="genres"
+            class="form-control"
+            style="font-weight: bold; color: #95a5a6"
+          >
+            <option value="any">Any</option>
+          </select>
+        </div>
+        <div class="col-md">
+          <label for="year" style="font-weight: bold; color: white"
+            >Year</label
+          >
+          <select
+            id="year"
+            class="form-control"
+            style="font-weight: bold; color: #95a5a6"
+          >
+            <option value="any">Any</option>
+          </select>
+        </div>
+        <div class="col-md">
+          <label for="rating" style="font-weight: bold; color: white"
+            >Rating</label
+          >
+          <select
+            id="rating"
+            class="form-control"
+            style="font-weight: bold; color: #95a5a6"
+          >
+            <option value="any">Any</option>
+          </select>
+        </div>
+        <div class="col-md">
+          <label for="language" style="font-weight: bold; color: white"
+            >Language</label
+          >
+          <select
+            id="language"
+            class="form-control"
+            style="font-weight: bold; color: #95a5a6"
+          >
+            <option value="any">Any</option>
+          </select>
+        </div>
+      </div>
+      <div style="align-self: flex-end; margin-top: auto; padding-top: 12px">
+        <button
+          class="btn btn-secondary"
+          style="background-color: white; color: black"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 21V14"
+              stroke="#95A5A6"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M4 10V3"
+              stroke="#95A5A6"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M12 21V12"
+              stroke="#95A5A6"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M12 8V3"
+              stroke="#95A5A6"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M20 21V16"
+              stroke="#95A5A6"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M20 12V3"
+              stroke="#95A5A6"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M1 14H7"
+              stroke="#95A5A6"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M9 8H15"
+              stroke="#95A5A6"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M17 16H23"
+              stroke="#95A5A6"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-3 mb-5">
+      <div class="movie-header">
+        <h2 style="color: white; font-weight: bold">NOW IN THEATERS</h2>
+        <a routerLink="/all-movies" class="view-all-link">View All</a>
+      </div>
+      <div class="movie-list">
+        <app-movie-card
+          *ngFor="let movie of nowInTheaters; let i = index; let last = last"
+          [movie]="movie"
+          [hoverLeft]="last"
+        ></app-movie-card>
+      </div>
+    </div>
+
+    <div class="mt-3 mb-5">
+      <div class="movie-header">
+        <h2 style="color: white; font-weight: bold">UPCOMING MOVIES</h2>
+        <a routerLink="/all-movies" class="view-all-link">View All</a>
+      </div>
+      <div class="movie-list">
+        <app-movie-card
+          *ngFor="let movie of upcomingMovies; let i = index; let last = last"
+          [movie]="movie"
+          [hoverLeft]="last"
+        ></app-movie-card>
+      </div>
+    </div>
+
+    <div class="latest-reviews">
+      <div class="latest-reviews-header">
+        <h2 style="color: white; font-weight: bold">Latest Reviews</h2>
+        <a href="#" class="view-all-link">View more</a>
+      </div>
+      <div class="review-list">
+        <app-review-card *ngFor="let review of latestReviews" [review]="review"></app-review-card>
+      </div>
+    </div>
+  </div>
+</body>
+
 
 <ng-template #loggedOut>
-  <head>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
@@ -384,16 +592,40 @@
       </div>
 
       <div class="mt-3 mb-5">
-        <h2 style="color: white; font-weight: bold;">NOW IN THEATERS</h2>
+        <div class="movie-header">
+          <h2 style="color: white; font-weight: bold">NOW IN THEATERS</h2>
+          <a routerLink="/all-movies" class="view-all-link">View All</a>
+        </div>
         <div class="movie-list">
-          <app-movie-card *ngFor="let movie of nowInTheaters" [movie]="movie"></app-movie-card>
+          <app-movie-card
+            *ngFor="let movie of nowInTheaters; let i = index; let last = last"
+            [movie]="movie"
+            [hoverLeft]="last"
+          ></app-movie-card>
         </div>
       </div>
 
       <div class="mt-3 mb-5">
-        <h2 style="color: white; font-weight: bold;">UPCOMING MOVIES</h2>
+        <div class="movie-header">
+          <h2 style="color: white; font-weight: bold">UPCOMING MOVIES</h2>
+          <a routerLink="/all-movies" class="view-all-link">View All</a>
+        </div>
         <div class="movie-list">
-          <app-movie-card *ngFor="let movie of upcomingMovies" [movie]="movie"></app-movie-card>
+          <app-movie-card
+            *ngFor="let movie of upcomingMovies; let i = index; let last = last"
+            [movie]="movie"
+            [hoverLeft]="last"
+          ></app-movie-card>
+        </div>
+      </div>
+
+      <div class="latest-reviews">
+        <div class="latest-reviews-header">
+          <h2 style="color: white; font-weight: bold">Latest Reviews</h2>
+          <a href="#" class="view-all-link">View more</a>
+        </div>
+        <div class="review-list">
+          <app-review-card *ngFor="let review of latestReviews" [review]="review"></app-review-card>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-<div class="movie-card">
+<div class="movie-card" [ngClass]="hoverLeft ? 'hover-left' : ''">
   <img
     *ngIf="movie?.imageUrl"
     [src]="movie?.imageUrl"
@@ -19,8 +19,8 @@
             d="M16.7572 1.05457C16.4538 0.41011 15.8127 0 15.1087 0C14.4046 0 13.7693 0.41011 13.4602 1.05457L9.7797 8.80566L1.56014 10.0477C0.873268 10.1532 0.300875 10.6453 0.0890898 11.319C-0.122695 11.9928 0.0490221 12.7369 0.54128 13.2348L6.50561 19.2752L5.09752 27.8113C4.98305 28.5144 5.26924 29.2291 5.83591 29.6451C6.40258 30.0611 7.15241 30.1138 7.7706 29.7799L15.1144 25.7666L22.4582 29.7799C23.0764 30.1138 23.8262 30.0669 24.3929 29.6451C24.9595 29.2233 25.2457 28.5144 25.1313 27.8113L23.7175 19.2752L29.6818 13.2348C30.174 12.7369 30.3515 11.9928 30.134 11.319C29.9165 10.6453 29.3498 10.1532 28.6629 10.0477L20.4376 8.80566L16.7572 1.05457Z"
             fill="#F5BD02"
           />
-        </svg> &nbsp;
-        {{ movie?.rating }} ({{ movie?.usersRating }})
+        </svg>
+        &nbsp; {{ movie?.rating }} ({{ movie?.usersRating }})
       </div>
       <div class="movie-watchlist" *ngIf="movie?.watchlist">
         <svg
@@ -46,8 +46,8 @@
               />
             </clipPath>
           </defs>
-        </svg> &nbsp;
-        ({{ movie?.watchlist }})
+        </svg>
+        &nbsp; ({{ movie?.watchlist }})
       </div>
     </div>
     <div class="movie-title">
@@ -57,7 +57,9 @@
       <div class="movie-director">{{ movie?.director }}</div>
       <div class="movie-runtime">{{ movie?.runtime }}</div>
       <div class="movie-genres">
-        <span *ngFor="let genre of movie?.genres" class="genre">{{ genre }}</span>
+        <span *ngFor="let genre of movie?.genres" class="genre">{{
+          genre
+        }}</span>
       </div>
       <div class="movie-description">{{ movie?.description }}</div>
     </div>
