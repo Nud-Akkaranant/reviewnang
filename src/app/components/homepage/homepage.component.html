@@ -185,7 +185,7 @@
       </div>
       <div class="movie-list">
         <app-movie-card
-          *ngFor="let movie of nowInTheaters; let i = index; let last = last"
+          *ngFor="let movie of movieService.nowInTheaters; let i = index; let last = last"
           [movie]="movie"
           [hoverLeft]="last"
         ></app-movie-card>
@@ -199,7 +199,7 @@
       </div>
       <div class="movie-list">
         <app-movie-card
-          *ngFor="let movie of upcomingMovies; let i = index; let last = last"
+          *ngFor="let movie of movieService.upcomingMovies; let i = index; let last = last"
           [movie]="movie"
           [hoverLeft]="last"
         ></app-movie-card>
@@ -212,7 +212,7 @@
         <a href="#" class="view-all-link">View more</a>
       </div>
       <div class="review-list">
-        <app-review-card *ngFor="let review of latestReviews" [review]="review"></app-review-card>
+        <app-review-card *ngFor="let review of movieService.latestReviews" [review]="review"></app-review-card>
       </div>
     </div>
   </div>
@@ -598,7 +598,7 @@
         </div>
         <div class="movie-list">
           <app-movie-card
-            *ngFor="let movie of nowInTheaters; let i = index; let last = last"
+            *ngFor="let movie of movieService.nowInTheaters; let i = index; let last = last"
             [movie]="movie"
             [hoverLeft]="last"
           ></app-movie-card>
@@ -612,7 +612,7 @@
         </div>
         <div class="movie-list">
           <app-movie-card
-            *ngFor="let movie of upcomingMovies; let i = index; let last = last"
+            *ngFor="let movie of movieService.upcomingMovies; let i = index; let last = last"
             [movie]="movie"
             [hoverLeft]="last"
           ></app-movie-card>
@@ -625,7 +625,7 @@
           <a href="#" class="view-all-link">View more</a>
         </div>
         <div class="review-list">
-          <app-review-card *ngFor="let review of latestReviews" [review]="review"></app-review-card>
+          <app-review-card *ngFor="let review of movieService.latestReviews" [review]="review"></app-review-card>
         </div>
       </div>
     </div>
