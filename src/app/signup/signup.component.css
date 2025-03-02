@@ -1,0 +1,106 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: transparent;
+  }
+  
+  .movie-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+  }
+  
+  .movie-list img {
+    width: 350px;
+    height: auto;
+
+    object-fit: cover;
+    border-radius: 5px;
+    align-items: flex-end;
+  }
+  
+  .signup-form {
+    background-color: #D9D9D9 10%;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: inset 1px 7px 100px rgba(255, 255, 255, 0.699);
+   
+    
+  }
+  
+
+  
+  .signup-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: transparent;
+
+  }
+  
+  .signup-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    
+  }
+  
+  .signup-form .google-signup {
+    background-color: #ffffff;
+  }
+  
+  .signup-form label {
+    display: flex;
+    align-items: center; 
+    margin-top: 10px;
+    font-size: 14px; 
+  }
+  
+  .signup-form input[type="checkbox"] {
+    margin-right: -200px; /* ระยะห่างระหว่าง checkbox และข้อความ */
+    margin-left: -200px;
+  }
+  
+  .signup-form a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .signup-form a:hover {
+    text-decoration: underline;
+  }
+  
+  .signup-form .or {
+    text-align: center;
+    margin: 10px 0;
+  }
+  
+  .signup-form p {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;}
+    
+#Capa_1{
+    width: 40px;
+    height: 40px;
+}
+.line {
+    width: 200px;   /* ความยาวเส้น */
+    height: 2px;    /* ความหนาเส้น */
+    background-color: rgb(255, 255, 255); /* สีของเส้น */
+  }
+
+.signup-form input::placeholder{
+    color: white;
+    font-style: bold;
+    opacity: 50%;
+}
