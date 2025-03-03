@@ -1,40 +1,57 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
-  isLoggedIn$ = this.isLoggedInSubject.asObservable();
+  private authStateSubject = new BehaviorSubject<User | null>(null);
+  authState: Observable<User | null> = this.authStateSubject.asObservable();
+
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: any
+  ) {
+    if (isPlatformBrowser(this.platformId)) {
+      const storedUsername = localStorage.getItem('username');
+      if (storedUsername) {
+        this.currentUser = { username: storedUsername, password: '' };
+        this.authStateSubject.next(this.currentUser);
+      }
+    }
+  }
+
   private currentUser: User | null = null;
 
   login(user: User): boolean {
     if (user.username === 'test' && user.password === 'test') {
-      this.isLoggedInSubject.next(true);
       this.currentUser = user;
-      localStorage.setItem('username', user.username);
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('username', user.username);
+      }
+      this.authStateSubject.next(this.currentUser);
       return true;
     }
     return false;
   }
 
   logout(): void {
-    this.isLoggedInSubject.next(false);
     this.currentUser = null;
-    localStorage.removeItem('username');
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('username');
+    }
+    this.authStateSubject.next(null);
     this.router.navigate(['/homepage']);
   }
 
   isUserLoggedIn(): boolean {
-    return this.isLoggedInSubject.value;
+    return !!this.currentUser;
   }
 
   getCurrentUser(): User | null {
     return this.currentUser;
   }
-
-  constructor(private router: Router) { }
 }

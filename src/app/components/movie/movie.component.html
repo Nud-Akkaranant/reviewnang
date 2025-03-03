@@ -1,20 +1,161 @@
-<div class="movie-details">
-    <img [src]="movie.imageUrl" alt="{{ movie.title }} poster" class="movie-poster">
-    <h2 class="movie-title">{{ movie.title }}</h2>
-    <div class="movie-rating">
-      <span class="rating-value">{{ movie.rating }}</span>
-      <span class="users-rating">({{ movie.usersRating }} users)</span>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <div class="d-flex w-100 justify-content-center">
+        <a class="navbar-brand" routerLink="/homepage" style="font-weight: bold"
+          >Review Nang</a
+        >
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" style="font-weight: bold">Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-weight: bold">{{
+              currentUser?.username
+            }}</a>
+          </li>
+          <li class="nav-item">
+            <app-user-dropdown></app-user-dropdown>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="watchlist-count">
-      <span class="watchlist-value">{{ movie.watchlist }}</span>
-      <span class="watchlist-label">in watchlist</span>
+  </nav>
+
+  <div class="movie-details-page">
+    <div
+      class="movie-header"
+      [style.backgroundImage]="'url(' + movie?.imageUrl + ')'"
+    >
+      <div class="movie-header-content">
+        <h1 class="movie-title">{{ movie.title }}</h1>
+        <p class="movie-tagline">{{ movie.tagline }}</p>
+        <div class="movie-actions">
+          <div class="movie-rating">
+            <svg
+              width="31"
+              height="30"
+              viewBox="0 0 31 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16.7572 1.05457C16.4538 0.41011 15.8127 0 15.1087 0C14.4046 0 13.7693 0.41011 13.4602 1.05457L9.7797 8.80566L1.56014 10.0477C0.873268 10.1532 0.300875 10.6453 0.0890898 11.319C-0.122695 11.9928 0.0490221 12.7369 0.54128 13.2348L6.50561 19.2752L5.09752 27.8113C4.98305 28.5144 5.26924 29.2291 5.83591 29.6451C6.40258 30.0611 7.15241 30.1138 7.7706 29.7799L15.1144 25.7666L22.4582 29.7799C23.0764 30.1138 23.8262 30.0669 24.3929 29.6451C24.9595 29.2233 25.2457 28.5144 25.1313 27.8113L23.7175 19.2752L29.6818 13.2348C30.174 12.7369 30.3515 11.9928 30.134 11.319C29.9165 10.6453 29.3498 10.1532 28.6629 10.0477L20.4376 8.80566L16.7572 1.05457Z"
+                fill="#F5BD02"
+              />
+            </svg>
+            &nbsp; {{ movie.rating }}
+          </div>
+          <button class="add-watchlist-btn">Add to Watchlist</button>
+        </div>
+      </div>
     </div>
-    <p class="movie-description">{{ movie.description }}</p>
-    <div class="movie-info">
-      <span class="director">Director: {{ movie.director }}</span>
-      <span class="runtime">Runtime: {{ movie.runtime }}</span>
+
+    <div class="movie-details-tabs">
+      <div class="tabs">
+        <button
+          class="tab-btn"
+          [ngClass]="{ active: activeTab === 'overview' }"
+          (click)="showTab('overview')"
+        >
+          Overview
+        </button>
+        <button
+          class="tab-btn"
+          [ngClass]="{ active: activeTab === 'cast' }"
+          (click)="showTab('cast')"
+        >
+          Cast
+        </button>
+        <button
+          class="tab-btn"
+          [ngClass]="{ active: activeTab === 'staff' }"
+          (click)="showTab('staff')"
+        >
+          Staff
+        </button>
+        <button
+          class="tab-btn"
+          [ngClass]="{ active: activeTab === 'trailer' }"
+          (click)="showTab('trailer')"
+        >
+          Trailer
+        </button>
+        <button
+          class="tab-btn"
+          [ngClass]="{ active: activeTab === 'reviews' }"
+          (click)="showTab('reviews')"
+        >
+          User Reviews
+        </button>
+      </div>
+
+      <div class="tab-content">
+        <div class="overview-tab" *ngIf="activeTab === 'overview'">
+          <p>{{ movie?.description }}</p>
+        </div>
+
+        <div class="cast-tab" *ngIf="activeTab === 'cast'">
+          <div class="cast-member" *ngFor="let member of movie?.cast">
+            <img
+              [src]="member.imageUrl"
+              alt="{{ member.name }}"
+              class="cast-photo"
+            />
+            <div class="cast-info">
+              <span class="cast-name">{{ member.name }}</span>
+              <span class="cast-role">{{ member.role }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="staff-tab" *ngIf="activeTab === 'staff'">
+          <div class="staff-member" *ngFor="let member of movie?.staff">
+            <img
+              [src]="member.imageUrl"
+              alt="{{ member.name }}"
+              class="staff-photo"
+            />
+            <div class="staff-info">
+              <span class="staff-name">{{ member.name }}</span>
+              <span class="staff-role">{{ member.role }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="trailer-tab" *ngIf="activeTab === 'trailer'">
+          <iframe
+            width="560"
+            height="315"
+            [src]="movie?.trailerUrl"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <div class="reviews-tab" *ngIf="activeTab === 'reviews'">
+          <div class="review" *ngFor="let review of movie?.reviews">
+            <p class="review-text">{{ review.text }}</p>
+            <span class="reviewer">{{ review.reviewer }}</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="movie-genres">
-      <span class="genre" *ngFor="let genre of movie.genres">{{ genre }}</span>
+
+    <div class="similar-movies">
+      <h2>Similar Movies</h2>
+      <div class="similar-movies-list">
+        <div
+          class="similar-movie"
+          *ngFor="let similarMovie of movie?.similarMovies"
+        >
+          <img
+            [src]="similarMovie.imageUrl"
+            alt="{{ similarMovie.title }}"
+            class="similar-movie-poster"
+          />
+        </div>
+      </div>
     </div>
   </div>
+</body>

@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
-import { Movie } from '../../models/movie.model';
-import { Review } from '../../models/review.model';
+import { UserDropdownComponent } from '../../shared/user-dropdown/user-dropdown.component';
 import { MovieService } from '../../services/movie.service';
 import { Subscription } from 'rxjs';
 
@@ -13,8 +12,8 @@ import { Subscription } from 'rxjs';
   styleUrl: './homepage.component.css',
 })
 export class HomepageComponent implements OnInit, OnDestroy {
-  private isLoggedInSubscription: Subscription | null = null;
-
+  private authStateSubscription: Subscription | null = null;
+  isDropdownOpen: boolean = false;
 
   isLoggedIn: boolean = false;
   currentUser: User | null = null;
@@ -23,23 +22,29 @@ export class HomepageComponent implements OnInit, OnDestroy {
     public authService: AuthService,
     public movieService: MovieService
   ) {
-    this.isLoggedInSubscription = this.authService.isLoggedIn$.subscribe(
-      (loggedIn) => {
-        this.isLoggedIn = loggedIn;
+    this.authStateSubscription = this.authService.authState.subscribe(
+      (user) => {
+        this.isLoggedIn = !!user;
+        this.currentUser = user;
       }
     );
   }
 
-  ngOnInit() {
-    this.isLoggedIn = this.authService.isUserLoggedIn();
-    if (this.isLoggedIn) {
-      this.currentUser = this.authService.getCurrentUser();
-    }
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 
+  closeDropdown() {
+    setTimeout(() => {
+      this.isDropdownOpen = false;
+    }, 150);
+  }
+
+  ngOnInit() { }
+
   ngOnDestroy(): void {
-    if (this.isLoggedInSubscription) {
-      this.isLoggedInSubscription.unsubscribe();
+    if (this.authStateSubscription) {
+      this.authStateSubscription.unsubscribe();
     }
   }
 }
