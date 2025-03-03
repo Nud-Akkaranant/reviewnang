@@ -1,0 +1,105 @@
+<!-- <div class="dropdown">
+  <button
+    class="dropdown-toggle"
+    (click)="toggleDropdown()"
+    (blur)="closeDropdown()"
+  >
+  </button>
+  <div class="dropdown-menu" [class.show]="isDropdownOpen">
+    <a class="dropdown-item" routerLink="/profile">Profile</a>
+    <a class="dropdown-item" routerLink="/notifications">Notification</a>
+    <a class="dropdown-item" routerLink="/settings">Settings</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" (click)="authService.logout()">Logout</a>
+  </div>
+</div> -->
+
+<div class="dropdown">
+    <button
+      class="dropdown-toggle"
+      (click)="toggleDropdown()"
+      (blur)="closeDropdown()"
+    >
+      <span class="caret"
+        ><svg
+          width="28"
+          height="18"
+          viewBox="0 0 28 18"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12.5208 17.3858L0.617068 5.53679C-0.205689 4.71781 -0.205689 3.39351 0.617068 2.58325L2.59519 0.61423C3.41794 -0.204743 4.74836 -0.204743 5.56236 0.61423L14 9.01307L22.4376 0.61423C23.2604 -0.204743 24.5908 -0.204743 25.4048 0.61423L27.3829 2.58325C28.2057 3.40223 28.2057 4.72653 27.3829 5.53679L15.4792 17.3858C14.674 18.2047 13.3435 18.2047 12.5208 17.3858Z"
+            fill="white"
+          />
+        </svg>
+      </span>
+    </button>
+    <div class="dropdown-menu" [class.show]="isDropdownOpen">
+      <a class="dropdown-item" routerLink="/profile">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
+          />
+        </svg>
+        Profile
+      </a>
+      <a class="dropdown-item" routerLink="/settings">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"
+          />
+        </svg>
+        Notification
+      </a>
+      <a class="dropdown-item" routerLink="/settings">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"
+          />
+          <path
+            d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"
+          />
+        </svg>
+        Settings
+      </a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" (click)="authService.logout()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="currentColor"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+          />
+        </svg>
+        Logout
+      </a>
+    </div>
+  </div>

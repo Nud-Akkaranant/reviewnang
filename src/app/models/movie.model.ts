@@ -8,4 +8,10 @@ export interface Movie {
     runtime?: string;
     genres?: string[];
     description?: string;
+    tagline?: string;
+    cast?: { name: string; imageUrl: string; role: string }[];
+    staff?: { name: string; imageUrl: string; role: string }[];
+    trailerUrl?: string;
+    reviews?: { text: string; reviewer: string }[];
+    similarMovies?: { title: string; imageUrl: string }[];
 }

@@ -10,4 +10,5 @@ import { Movie } from '../../models/movie.model';
 export class MovieCardComponent {
   @Input() movie: Movie | undefined;
   @Input() hoverLeft: boolean = false;
+  @Input() isLoggedIn: boolean = false;
 }
